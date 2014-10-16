@@ -1,6 +1,8 @@
 TupleSpace - A golang implementation of tuple space
 ===================================================
 
+[![Build Status](https://travis-ci.org/nyarla/go-tuplespace.svg?branch=master)](https://travis-ci.org/nyarla/go-tuplespace) [![GoDoc](http://godoc.org/github.com/nyarla/go-tuplespace?status.svg)](http://godoc.org/github.com/nyarla/go-tuplespace)
+
 Install
 -------
 
