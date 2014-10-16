@@ -18,7 +18,7 @@ type tuple struct {
 	Tuple
 }
 
-func New(expires int64, data ...interface{}) *tuple {
+func New(expires int64, data ...interface{}) Tuple {
 	return &tuple{
 		data:    data,
 		expires: time.Now().Unix() + expires,

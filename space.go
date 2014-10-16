@@ -118,7 +118,7 @@ type tupleSpace struct {
 	watchers *watchersManager
 }
 
-func NewSpace() *tupleSpace {
+func NewSpace() TupleSpace {
 	return &tupleSpace{
 		tuples: &tupleManager{
 			tuples: make([]Tuple, 0),
