@@ -1,7 +1,7 @@
 package tuplespace
 
 import (
-	"code.google.com/p/go-uuid/uuid"
+	"github.com/google/uuid"
 	"sync"
 )
 
@@ -76,7 +76,7 @@ func (wM *watchersManager) Register(tuple Tuple, receiver chan Tuple) uuid.UUID 
 	wM.mutex.Lock()
 	defer wM.mutex.Unlock()
 
-	id := uuid.NewRandom()
+	id := uuid.New()
 
 	wM.watchers[id.String()] = &callback{
 		Tuple:    tuple,
