@@ -3,10 +3,11 @@ package tuplespace
 import (
 	"reflect"
 	"testing"
+	"time"
 )
 
 func TestTuple(t *testing.T) {
-	tuple := New(600, `foo`, `bar`, `baz`)
+	tuple := New(1*time.Minute, `foo`, `bar`, `baz`)
 
 	if tuple.Len() != 3 {
 		t.Fatal(`invalid tuple length.`)
@@ -16,11 +17,11 @@ func TestTuple(t *testing.T) {
 		t.Fatal(`invalid tuple values.`)
 	}
 
-	if !tuple.Match(New(60, `foo`, `bar`)) {
+	if !tuple.Match(New(1*time.Minute, `foo`, `bar`)) {
 		t.Fatal(`Tuple#Match is wrong implementation.`)
 	}
 
-	if tuple.Match(New(60, `baz`)) {
+	if tuple.Match(New(1*time.Minute, `baz`)) {
 		t.Fatal(`Tuple#Match is wrong implementation.`)
 	}
 

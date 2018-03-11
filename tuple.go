@@ -14,14 +14,14 @@ type Tuple interface {
 
 type tuple struct {
 	data    []interface{}
-	expires int64
+	expires time.Time
 	Tuple
 }
 
-func New(expires int64, data ...interface{}) Tuple {
+func New(expires time.Duration, data ...interface{}) Tuple {
 	return &tuple{
 		data:    data,
-		expires: time.Now().Unix() + expires,
+		expires: time.Now().Add(expires),
 	}
 }
 
@@ -50,5 +50,5 @@ func (t1 *tuple) Match(t2 Tuple) bool {
 }
 
 func (t *tuple) IsExpired() bool {
-	return t.expires <= time.Now().Unix()
+	return time.Until(t.expires) <= 0
 }

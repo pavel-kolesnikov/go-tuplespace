@@ -3,12 +3,13 @@ package tuplespace
 import (
 	"reflect"
 	"testing"
+	"time"
 )
 
 func TestTupleSpaceReadAndTake(t *testing.T) {
 	space := NewSpace()
 
-	space.Write(New(600, `foo`, `bar`))
+	space.Write(New(1*time.Minute, `foo`, `bar`))
 
 	recv1 := space.Read(New(0, `foo`))
 
@@ -34,7 +35,7 @@ func TestTupleSpaceWatchAndCancel(t *testing.T) {
 	id := space.Watch(New(0, `foo`), recv)
 
 	go func() {
-		space.Write(New(600, `foo`, `bar`))
+		space.Write(New(1*time.Minute, `foo`, `bar`))
 	}()
 
 	if t1 := <-recv; !reflect.DeepEqual(t1.Values(), []interface{}{`foo`, `bar`}) {
